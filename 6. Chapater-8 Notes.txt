@@ -1,0 +1,519 @@
+==============
+Reflection API
+==============
+
+-> Using Reflecting api we can analyze our java classes
+
+-> Reflection api is used to analyze the software
+
+
+package in.ashokit;
+
+public class Student {
+
+	private int id;
+	private String name;
+
+	public void display() {
+		System.out.println("hi");
+	}
+
+	public void m1() {
+		System.out.println("this is m1()");
+	}
+
+	public void m2() {
+		System.out.println("this is m2()");
+	}
+}
+
+package in.ashokit;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
+public class Demo {
+
+	public static void main(String[] args) throws Exception {
+
+		Class clz = Class.forName("in.ashokit.Student");
+
+		Field[] fields = clz.getDeclaredFields();
+		for (Field f : fields) {
+			System.out.println(f.getName());
+		}
+
+		Method[] methods = clz.getDeclaredMethods();
+		for (Method m : methods) {
+			System.out.println(m.getName());
+		}
+
+		Constructor[] constructors = clz.getDeclaredConstructors();
+		for (Constructor c : constructors) {
+			System.out.println(c.getName());
+		}
+
+	}
+
+}
+
+// Accessing private variable outside of the class using Reflection API
+
+
+package in.ashokit;
+
+public class Student {
+
+	private int age = 20;
+
+	public void getAge() {
+		System.out.println("Age : " + age);
+	}
+
+}
+
+
+
+package in.ashokit;
+
+import java.lang.reflect.Field;
+
+public class Demo {
+
+	public static void main(String[] args) throws Exception {
+
+		// loading class into jvm
+		Class clz = Class.forName("in.ashokit.Student");
+
+		// creating object for the loaded class
+		Object obj = clz.newInstance();
+
+		// getting the filed whose name is age
+		Field field = clz.getDeclaredField("age");
+
+		// making variable accessible outside of the class
+		field.setAccessible(true);
+
+		// set value to field
+		field.set(obj, 35);
+
+		Student s = (Student) obj;
+		s.getAge();
+
+	}
+
+}
+
+
+
+
+
+
+/// Invoking the method using Reflection API
+
+package in.ashokit;
+
+import java.lang.reflect.Method;
+
+public class Demo {
+
+	public static void main(String[] args) throws Exception {
+
+		Class<?> clz = Class.forName("in.ashokit.Student");
+
+		Method method = clz.getDeclaredMethod("getAge");
+
+		Object obj = clz.newInstance();
+
+		method.invoke(obj, null);
+	}
+}
+
+
+Q) What is the difference between ClassNotFoundException and NoClassDefFoundError ?
+
+-> If we give wrong class name in Class.forName (" ") then we will get ClassNotFoundException
+
+-> NoClassDefFoundError will occur if jvm not able to find .class file of particular class to load
+
+
+
+==================
+Garbage Collection
+==================
+
+-> Garbage Collection is the process of removing un-used / un-referenced objects from JVMs heap area.
+
+-> Garbage Collection is  an in-built process in JVM
+
+-> In JVM, garbage collector available to perform Garbage Collection.
+
+-> Garbage Collector is a daemon thread (runs in background)
+
+
+package in.ashokit;
+
+public class Student {
+
+	public static void main(String[] args) {
+
+		// Object created
+		Student s1 = new Student();
+
+		// nullifying (making obj eligible for GC)
+		s1 = null;
+
+		System.gc();
+
+	}
+
+	protected void finalize() throws Throwable {
+		System.out.println("finalize( ) called...");
+	}
+
+}
+
+
+=> When we assign s1=null then s1 become un-referenced object and it is elgible for GC
+
+=> When GC identify un-referenced obj then it will call finalize ( ) method and it will 
+remove that object from HEAP area (memory clean up)
+
+========================
+How to invoke GC in java?
+========================
+
+-> In java we have 2 ways to invoke GC
+
+		System.gc();
+
+		Runtime.getRuntime().gc();
+
+Note:  Even if we call above methods there is no gaurantee that JVM will start GC immediatley.
+GC execution process will be managed by JVM only.
+
+===============================
+How GC works internally in JVM ?
+===============================
+
+-> Garbage Collection works in below phases
+
+1) Stop the world
+2) Marking
+3) Sweeping
+4) Compaction
+
+-> When GC starts it will trigger STOP THE WORLD (all running threads will be stopped for few milli secs)
+
+-> GC will go to JVM Heap area and it will identify un-referenced objects and it will mark 
+  them for sweep. 
+
+-> GC will sweep marked objects
+
+-> After sweeping completed memory holes will be created in Heap area to clear that 
+  GC will perform Compaction (it will adjust memory holes).
+
+-> After Compaction, GC will give signal to JVM to continue the execution.
+
+
+Note: GC process will slow down our program execution hence Sun Microsystem 
+ didn't give the chance for programmers to perform Garbage Collection. It will be managed by JVM.
+
+
+9 AM - 11 AM IST :   Online
+
+
+
+Garbage Collection:
+===================
+
+In C++ ->developers create objects and destroy them
+
+in java ->developers create objects and not responsible to destroy them.
+
+
+Garbage Collector in JVM:
+=========================
+->it is a daemon thread,running internally and provide Garbage Collection Service to JVM.
+
+Garbage Collection:
+===================
+-> Garbage Collection is the process of removing un-used / un-referenced objects from JVMs heap area.
+
+->it is a Automatic Process and We can request JVM in order to run Garbage Collector to destroy 
+  the objects 
+
+
+Approach to make an object elgible eligible for Garbage Collection:
+===================================================================
+
+1)Nullifying Object reference Variable:
+=======================================
+
+Employe e1=new Employe();
+Employe e2=new Employe();
+Employe e3=new Employe();
+
+e1=null;
+e1=null;
+e2=null;
+
+
+
+
+2)Reassign values to the reference variable
+===========================================
+Employe e1=new Employe();
+Employe e2=new Employe();
+
+
+e1=new Employe();
+e2=new Employe();
+
+
+3)Creating Objects in methods:
+==============================
+
+class A
+
+{
+ publiv void m1()
+ {
+  Employe e1=new Employe();
+  Employe e2=new Employe();
+ }
+
+}
+
+class Test
+{
+
+public static void main(String args[])
+
+{
+
+A a=new A();
+a.m1();
+}
+
+}
+
+-> if we create objects inside a method then that method execution is completed then
+   those objects are eligible for Garbage Colection
+
+
+4)Island of ISolation:
+======================
+->Nullfiy Object reference value, not have any explicit reference
+->even objects are having implicit reference from one object to another object then that 
+objects are eligible for Garbage Collection 
+
+
+
+class A
+
+{
+ 
+ 
+ A a3
+ 
+public static void main(String args[])
+
+{
+
+
+A a1=new A();
+A a2=new A();
+
+a1.a3=null;
+a2.a3=null;
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Approaches for requesting JVM to run garbage Collector:
+=======================================================
+->After nullify objectt refernce variable
+
+1)System.gc() --> internally it will call Runtime.getRuntime().gc()
+2)Runtime.getRuntime().gc()
+
+
+
+4)Finalization:
+===============
+
+->it is a method defined in Object class.
+
+->GC will call Just before Collecting any Objects which is eligible for GC 
+
+->which object we are going to destroy that object related finalize() method is only
+  be executed. we can do clean up actvities for object which is going to destroy
+  
+
+class A
+{
+
+    public void finalize()
+    {
+   System.out.println("A-finalize");
+    }
+}
+
+class Test
+{
+
+public static void main(String[] args) {
+
+A a=new A();
+
+a=null;
+System.gc();
+
+}
+}
+
+->even object is eligible for more number of time for, still finalize method will be executed only 
+  once
+
+->when we call finalize method if any exceptions is rised then programme will teminate abnormally
+->if jvm calls system.gc if any exceptions is rised it will skip and contine the process
+
+ public void finalize()
+    {
+       int i=100/0;
+   }
+
+Memory Leaks:
+=============
+->In java application, If any Objects are not eligible for Garbage Collection and not used by 
+in our application then that objects are Memory Leaks
+
+
+
+Types of Garbage Collector:
+==========================
+
+1)Serial GC:
+============
+->it will perform Gc by having single thread only
+->while performing GC,it freez or pause all application threads
+->suitable for singgle thread applications
+->not suitable for servers side programming
+->required less memory to perform garbage collection.
+->Slower GC
+
+D:\java> java  -XX:+UseSerialGC Test
+
+
+2)Parllel GC
+============
+-> it will use more then one thread to perform GC
+-> it will pause all the application threads while performs GC
+->suitable for Multi Thread environment and server side programming
+->required more memory to perform garbage collection.
+->Faster GC
+
+D:java> java  -XX:+UseParallelGC Test
+
+
+3)Parllel OlD GC:
+=================
+->Almost like Parllel GC,but 
+->CMS[Concurrent Mark and Sweep] Garbage Collector
+->but it will follow the alogorithm like "mark-summary-compact"
+
+
+4)CMS GC[Concurrent Mark and Sweep]:
+=================================
+->like Parllel GC,but it will not freez application threads while performing GC except 2 cases
+
+1)while performing Marking Objects
+2)Any changes in heap area while performing GC
+
+5)Garbage First GC[G1]:
+=======================
+
+
+
+
+
+
+
+
+
+Java heap Memory and intenal Area w.r.t the garbage Collection:
+===============================================================
+->
+
+
+
+
+
+Generics
+Inner Classes
+Enums
+Class Loaders
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

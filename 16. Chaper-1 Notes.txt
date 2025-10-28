@@ -1,0 +1,1065 @@
+================
+What is Fullstack
+=================
+
+Fullstack Development = Frontend Development + Backend Development
+
+Frontend : User interface 
+
+-> Clients / Users will interact with s/w application using frontend 
+
+Backend : The hidden part of our application which contains business logic
+
+-> When use perform some operation on frontend then backend logic will execute to handle that operation
+
+-> The programmer who can develop frontend and backend of application is called as fullstack developer
+
+=====================
+Frontend Technologies
+=====================
+
+HTML & CSS
+Java script
+Bootstap
+Angular/React
+
+===================
+Backend Technologies
+====================
+Java
+Python
+PHP
+.Net
+Node JS
+
+===============
+Servers
+===============
+Tomcat
+JBoss
+Glassfish
+Oracle Weblogic 
+IBM WebSphere
+IIS
+
+===========
+Databases
+===========
+Oracle
+MySQL
+SQL Server
+Postgres
+Mongo DB
+Casandra
+Hbase
+Hive
+
+========
+Tools
+=========
+Git Hub : For Code Integration
+
+JIRA : Project Management / Bug Tracking / Work Assignment
+
+SonarQube : For Code Quality Checking
+
+JUnit : For Unit Testing
+
+JMETER : For Performance Testing 
+
+JENKINS : For Deployment (Automated Deployment)
+
+==========
+Cloud
+===========
+Amazon  ---> AWS
+Microsoft  ---> Azure
+Google -----> GCP
+Oracle Cloud
+IBM Cloud
+VM Ware Cloud
+Alibaba CLoud etc.....
+
+=======================================
+Roles & Responsibilities of Fullstack Developer
+=======================================
+
+1) Understand Requirements of Project
+2) Analyze requirements 
+3) Design / Planning
+4) Database Design
+5) Development (Backend development)
+6) Unit Testing
+7) Code Review
+8) Code Integration (Git Hub)
+9) Frontend Development
+10) Frontend + Backend Integration
+11) Deployment
+12) Support / Maintenence
+
+===========
+What is Java 
+===========
+
+-> Java is a  programming language
+
+-> Java language developed by Sun Microsystem in 1991  (OAK)
+
+-> James Gosling is the lead for the team who developed Java Language
+
+-> The first version of java came into market in 1995 
+
+Note: Oracle Corporation acquired Sun Microsystem
+
+-> Now java is under license of Oracle corporation
+
+-> Java is a free software & open source
+
+
+=======================
+Java is divided into 3 parts
+=======================
+
+1) J2SE ---Java platform Standord Edition
+2) J2EE --- Java platform EnterPrie Edition
+3) J2ME ----Java platform Micro Edition
+
+
+J2SE / JSE  ---> JAVA STANDARD EDITION
+
+		-> STAND-ALONE APPS
+		-> RUNS ONLY IN ONE MACHINE
+
+		EX: CALC, GAMES, NOTEPAD ETC......
+
+
+J2EE / JEE ---> JAVA ENTERPRISE EDITION
+
+
+		-> web applications
+
+		-> Everybody can access web applications using internet
+
+		ex: gmail, youtube, facebook, naukri, irctc etc.........
+
+
+J2ME / JME ---> JAVA MICRO / MOBILE EDITION
+
+		 -> Mobile apps
+
+		Ex: whatsapp, messgender, phonepay, gpay etc.....
+
+=======================
+What we can do using Java
+=======================
+
+1) Stand-alone applications
+
+2) Web applications
+
+3) Mobile Applications
+
+
+==============
+Java Features
+==============
+
+1) Simple : The complex topics of C & C++ are eliminated in Java
+
+	Ex: Operators overloading, pointers, memory mgmt etc...
+
+2) Platform Independent
+
+	-> Java programs can be executed on any machine(WORA)
+	-> JVM made java as platform independent
+	-> JVM stands for Java Virtual Machine
+	-> JVM is responsible to run/execute java programs
+
+3) Robust (Strong)
+
+	-> Automatic Memory Management(Memory allocation and deallocation for running program)
+	-> Exception Handling
+
+4) OOPS (Object Oriented Programming System)
+
+	-> Everything will be represented in objects format
+	-> Code Re-Usability
+
+5) Secure
+
+6) Distributed 
+
+7) Portable
+
+8) Dynamic
+
+9)multi-threded
+
+Java Slogan : WORA (Write Once Run Anywhere)
+
+==================
+Environment Setup
+==================
+
+1) Download and Install Java Software
+
+		- JDK (Java Development Kit)
+		- JRE (Java Runtime Environment)
+
+Q) What is the difference between JDK, JRE & JVM ?
+
+		---> JDK is the Java Development Kit (JDK) is a software development environment 
+		
+		  **which is used to develop Java applications
+		  **physically exists and contain JRE+ development tools.
+		  **development tools(interpreter (java), a compiler (javac),Debugger,documentation generator (Javadoc))
+		  
+		--> JRE providing a platform to run our java programs
+		
+		**Java Runtime Enivironment
+		**It contains Runtime tools, set of  class libraries such as rt.jar + JVM
+		**JVM run inside JRE
+		
+		--> JVM will take care of program run/execution
+
+2) Set Path for Java(To tell the system where is java present)
+
+		Path = C:\Program Files\Java\jdk1.8.0_202\bin
+	
+		-> Go To Environment Variables
+		-> Go To System Variables and click on path
+		-> Edit Path
+		-> Add JDK BIN path(C:\Program Files\Java\jdk1.8.0_202\bin)
+
+
+=========================
+Java Programs Development
+========================
+
+-> We can write java programs in any text editor
+
+			- Note Pad
+			- Note Pad++
+			- Edit Plus
+
+-> In companies we will use IDE to develop java programs/projects
+
+			- Integrated Development Environment
+
+					- Eclipse
+				        - MyEclipse
+				        - Netbeans
+					- STS (Spring Tool Suite)
+					- IntelliJ
+
+========================
+Java Program Structure
+=========================
+
+package statements
+
+import statements
+
+class declaration
+
+variables
+
+methods
+
+
+
+-----------hello.java---------
+class hello {
+
+ public static void main(String... args) {
+     System.out.println("Welcome To Ashok IT...!!");
+
+    System.out.println("Welcome to Java");
+ }
+
+}
+----------------------------
+
+javac hello.java
+
+java hello
+
+---------------------------
+class demo {
+ 
+   public static void main (String... args){
+		System.out.println("Hello World");
+	      System.out.println("Welcome to Java");
+   }
+}
+
+-----------------------------------
+
+-> javac measns java compiler which is used to compile java programs
+
+-> java compiler is called as translator
+
+
+===============
+Translators
+===============
+
+-> It is used to convert from one format to antoher format
+
+-> 3 types of translators available
+
+		1) Interpreter
+	
+		2) Compiler
+
+		3) Assembler
+
+
+->Interpreter will convert the program line by line  ( performance is slow )
+
+->Compiler will convert all the lines of program at a time ( performance is fast )
+
+->Assembler is used to convert assembler programming languages into machine language
+
+
+========
+JVM
+========
+-> JVM will be part of JRE.
+
+-> invented to achive platform independent
+
+-> JVM will convert byte code into bit code (Current os machine understandable format)
+
+-> JVM is responsible for executing/run java programs.
+
+-> JVM will allocate memory required for program execution & de-allocate memory when it is not used
+
+-> JVM machine is dependednt beacuase window JVM for windows and linux jvm for linux.
+
+================ 
+JVM Architecture(https://www.youtube.com/watch?v=m_awmmVF5pA&t=6209s)
+===============
+1)Class loader subsystem
+2)Memory management System
+3)Execution Enginee
+4)Java Native Interface
+5)Java Native Library.
+
+
+
+1) Classloader subsystem : 
+==========================
+
+-> ClassLoader responsible to perform below three activities 
+-> Load, Link and Initialize the given class byte code
+
+1)Loading a Class:
+==================
+
+-> In Class Loading phase ClassLoader will load & store given class bytecode into JVM’s Method Area.
+-> ClassLoader subsystem contains three types of class loaders 
+
+
+1. Bootstrap ClassLoader:
+========================
+->It is responsible to load Java library classes from BootStrapClasspath  
+    i.e.; from jdk\jre\lib\rt.jar file.  
+->It is part of the Java Virtual Machine implementation.   
+->It is implemented in native API, so it does not have class name. 
+->If we try to display its name, null will be displayed. 
+
+2. Extension ClassLoader:
+========================
+
+->It is responsible to load user defined classes or Third library classes from 
+  ExtensionClasspath, i.e.; from jdk\jre\lib\ext folder. 
+->It is part of Java API implementation.  
+->This class loader is implemented in Java with class name ExtClassLoader. 
+
+
+3. System/Application ClassLoader:
+=================================
+
+->It is responsible to load user defined classes from ApplicationClasspath.
+->It will load classes from current working directory or from the folders configured in 
+  classpath environment variable.  
+->This class loader is also implemented in Java with class name AppClassLoader.  
+
+
+
+Class loader Follows delegation Heirarchy Principle:
+---------------------------------------------------
+-> The Delegation Hierarchy Principle in Java class loading means that class loaders 
+  follow a defined order when trying to load a class
+  
+  ->Whenever JVM comes across a class, it checks whether it is already loaded.
+  ->if the class is already loaded in the method area, the JVM proceeds with execution.
+  
+->Suppose the class is not present in the method area. In that case, the JVM asks the Java 
+Classloader Sub-System to load that particular class, and then the Classloader sub-system hands 
+over the control to Application Classloader.
+	
+->Application Classloader then delegates the request to Extension Classloader, and the Extension 
+Classloader delegates the request to Bootstrap Classloader.
+ 
+->Bootstrap Classloader will search in Bootstrap classpath jdk\jre\lib\rt.jar It is loaded if the class is available; if not, the request is delegated to Extension Classloader.
+ 
+->Extension Classloader searches for the class in Extension Classpath jdk\jre\lib\ext If the class is 
+available, it is loaded; if not, the request is delegated to the Application Classloader.
+ 
+->Application ClassLoader searches for the class in the Application Classpath. If the class 
+ is available, it is loaded; if not, a ClassNotFoundException exception is generated.
+
+
+
+
+2)Linking A Class:
+=================
+=>verify:
+=========
+-> it will check whether byte code is right or not and generated from right compilers or not 
+-> Internally it will use byte code verifyer
+
+=>Prepare
+=========
+->Allocate memory for Static variables and assigns default values. 
+
+=>Resolve:
+==========
+->In our application all symbolic references replaced with actuall references
+
+
+3)Initialization
+================
+->static block is executed and the static variables are initialized 
+  with their initial values given in their declaration.  
+
+
+Memory Management System
+=======================
+
+1) Method Area:
+===============
+->Class byte code will be stored 
+->static memory is allocated
+->Constant pools managed by this area
+->memory allocated when ever class is loaded into jvm
+->All threds are eligible to acess data from method area
+->At the time time JVM start this memory will be created.
+
+
+2)Heap area 
+============
+->All Objects which are created in java by using new keyWord.
+->All java.lang.class objects with the metadata of loaded class  
+->At the time time JVM start this memory will be created.
+->Common memory all threds 
+->memory allocated when ever object is created.
+
+3) Java Stack :
+=============== 
+->It will be created at the time of creating threds and it is not common memory for all the threads.
+
+->in java application each and every thread seperate stack will be created in order to store
+ methods data like local, parameter variable and return values.
+ 
+->Method execution information will be stored here(local variables).
+
+->memory allocated when ever method is called and memory allocated local and parameter variables 
+
+4) PC Registers :  It will maintain/store next line information to execute
+=================
+5) Native Method Stack :  It includes all the native methods and It is not written in java.
+========================
+
+
+
+6) Native Method Libraries : it is a collection of the Native Libraries(C, C++) which are essential for the Execution Engine.
+
+7) Native Interface : 
+
+**It is an interface that interacts with the Native Method Libraries and provides the native 
+libraries(C, C++) required for the execution.
+ 
+8) Execution Engine  ( Interpreter + JIT ) : 
+    
+	***It is responsible to execute the program and provide output/result
+	**** Its main task is to execute the byte code and execute the Java classes.
+
+             1)Interpreter 
+			 
+		     -->Interprets the bytecode quickly but is a little slow in execution
+				  
+			2)JIT Complier(Just in time Compiler)
+			
+		    -->It helps in improving the performance of Java applications by compiling byte codes to 
+			machine code at runtime.
+
+            3)Garbage Collector
+			
+		     -->It tracks each and every object available in the JVM heap space 
+		        and removes unwanted ones.
+
+
+
+=======
+variables
+========
+
+-> variables are used to store the data
+
+			name   -  ashok
+       
+                        age - 30
+
+                        gender - m
+
+                        isStudent - false
+
+			mysalary - 400.56
+
+
+-> We need to specify type of the variable to store the data
+
+-> To specify type of data we will use 'data types'
+
+
+=========
+data types
+=========
+
+-> Data types are used to specify type of the data
+
+-> Data types are divided into 2 categories
+
+1) Primitive / Pre-Defined Data Types 
+
+->1 byte equels to 8 Bits
+
+		1) Integers
+				- byte    -1 byte
+				- short   -2 byte
+				- int     -4 byte
+				- long    -8 byte
+		2) Decimal
+				- float   -4 byte
+				- double  -8 byte
+
+		3) Character
+				- char     -2 byte
+
+		4) Boolean
+			   - boolean   -1 bit
+
+2)  Non-Primitive / Referenced Data Types
+
+			- Arrays
+			- Strings
+			- Classes
+
+Note:   1 byte=8 bits
+
+
+================
+Integral data types
+=================
+
+--> Integral data types are used to store numbers without decimal points
+
+-->  We can store both positive and negative numbers using integral data types
+
+
+Ex:
+
+age = 30
+
+phno = 66868686868
+
+studentscnt = 40
+
+balance = - 3000
+
+-> We have 4 data types in this category
+
+-> For These 4 data types memory & range is different
+
+		1)  byte   ----> default value is 0  ----> 1 byte
+
+		2)  short	----> default value is 0  ----> 2 bytes
+	
+		3)  int    ----> default value is 0  ----> 4 bytes
+
+		4)  long   ----> default value is 0l   ----> 8 bytes
+
+
+=================
+Decimal data types
+==================
+
+-> Decimal data types are used to store numbers with decimal values
+
+-> We can store both postive and negative values
+
+
+Ex: 
+
+petrol price  = 110.567979
+stockPrice = 334.3279797979797979
+percentage = 9.8
+weight = 55.6
+height = 5.6
+length = 10.2
+
+-> In this category we have 2 data types
+
+			1) float   ----> 4 bytes ---> upto 6 decimal points
+
+			2) double  -----> 8 bytes  --> upto 15 decimal points
+
+
+================
+character data type
+=================
+
+-> Character data type is used to store single character
+
+-> Any single character ( alphbet / digit / special character ) we can store using 'char' data type
+
+-> char datatype will occupy 2 bytes of memory
+
+-> When we are storing data into 'char' data type  single quote is mandatory
+
+-> default value is 'u0002'
+
+gender = 'm'
+
+rank = '1'
+
+Note: In C language 'char' will take only 1 byte where as in java 'char' will take 2 bytes
+
+==============
+boolean data type
+==============
+
+-> It is used to store true or false values only
+
+-> It will occupy 1 bit memory
+
+Note:  8 bits = 1 byte
+
+-> default value for boolean is false
+
+Ex:
+
+isPass;
+isFail
+isMarried
+isOdd
+isEven
+
+
+===========
+Variables
+===========
+->  Variables are used to store the data / value
+
+-> To store the data into variable we need to specify data type
+
+-> To store data into variables we need to perform 2 steps
+
+			1)  Variable Declaration  (defining variable with data type)
+
+				Ex:     byte age ;
+
+			2) Variable Intialization (storing value into variable)
+
+				Ex:   age = abc;
+
+
+-> We can complete declaration and intialization in single line
+
+					byte age = 20;
+
+
+=============================== Variables Program ==================================
+
+class var {
+
+      public static void main (String... args) {
+
+			int age = 20;
+			System.out.println(age);
+
+			float a = 25.01f;
+			System.out.println(a);
+
+			double price = 120.87;
+			System.out.println(price);
+	
+			char gender = 'm';
+			System.out.println(gender);
+		
+			boolean pass = true;
+			System.out.println(pass);
+					
+      }
+}
+
+
+
+1) Identifiers
+
+2) Keywords
+
+3) Java Naming Conventions
+
+
+===========
+Identifiers
+==========
+
+-> All java components requires a name
+
+-> For variables, for classes and for methods we need a name
+
+			int age ;
+
+			class Hello {
+				// code 
+			}
+
+			main ( ) {
+				//logic
+			}
+
+
+-> The name which we are using for packages, variables, classes  & methods is  called as identifier
+
+-> We can use any name for identifiers but we need to follow below rules to work with identifiers
+
+Rule-1 : Java will allow only below charaters for identifiers
+
+				1) a - z
+				2) A - Z
+				3) 0 to 9
+				4) $ (dollar)
+				5) _ (underscore)
+				
+-->@ and # are and spaces are invalid
+
+
+		Ex:
+
+				name   -----> valid
+				name@ -----> invalid
+				age#   ------> invalid
+
+Rule-2  : Identifier should not start with digit (first character shouldn't be digit)
+
+				1age --------> invalid
+				age2  ------> valid				
+				name3  -----> valid
+				_name -----> valid
+				$name ------> valid
+				@name ------> invalid
+				$_amt   --------> valid
+				_1bill -----------> valid
+
+Rule-3 :  Java reserved words shouldn't be used as identifier   (53 reserved words)
+
+					int byte = 20;    -------> invalid bcz byte is a reserved word
+
+					byte for = 25;   -------> invalid bcz for is a reserved word
+
+					int try = 30; 	------> invalid bcz try is a reserved word
+
+					long phno = 797979799 -----> valid
+			
+
+Rule-4 : Spaces are not allowed in identifiers
+
+				int mobile bill = 400;   // invalid
+
+				int mobile_bill = 400 ;   // valid
+
+
+Rule-5 : Java is case sensitive language 'name' & 'NAME' both are not same
+
+
+==============================================
+Java Naming Conventions  ( Java Coding Standards )
+===============================================
+
+-> Java language followed some standards/conventions for pre-defined packages, classes and methods....
+
+-> Java language suggested java programmers also to follow same standards / conventions
+
+-> Following these standards/conventions is not mandatory but highly recommended.
+
+===============================
+Naming Convention For Class Name
+===============================
+
+-> A class name can contain any no.of words without spaces
+-> Recommended to write every word first character as uppercase in class name
+
+Examples:
+
+class Hello  {
+}
+
+class HelloWorld {
+}
+
+class UserManagementService{
+}
+
+class WelcomeRestController {
+}
+
+Note: Class Names & Interface Names conventions are same.
+
+=========================
+Variables Naming Convention
+=========================
+
+-> Variable name can have any no.of words without spaces
+
+-> Recommended to start variable name with lowercase letter
+
+-> If variable name contains multiple words then recommended to write firstword all characters in lowercase and from second word onwards every word first character in Uppercase
+
+Examples:
+
+int age ;
+
+int  userAge;
+
+long creditCardNumber ;
+
+=========================
+Method Naming Convention
+=========================
+
+> Method name can have any no.of words without spaces
+
+-> Recommended to start method name with lowercase letter
+
+-> If method name contains multiple words then recommended to write firstword all characters in lowercase and from second word onwards every word first character in Uppercase
+
+main ( )  {
+}
+
+save ( ) {
+
+}
+
+saveUser( ) {
+
+}
+
+getWelcomeMsg ( ) {
+
+}
+
+
+Note: Variables & Methods naming conventions are same. But methods will have parenthesis ( () ) variables will not have parenthesis.
+
+
+==============================
+Naming Conventions for Constants
+=============================
+
+-> Constant means fixed value (value will not change, it is fixed)
+
+-> Recommended to write constant variable all characters in uppercase
+
+-> If constant variable contains multiple words recommended to use _ (underscore) with all uppercase characters
+
+
+		final int MIN_AGE = 21;
+
+		final int MAX_AGE = 60 ;
+
+		int PI = 3.14;
+
+
+===============================
+Naming Conventions for Packages
+==============================
+
+-> Package name can have any no.of characters & any of words
+
+-> Recommended to use only lowercase letters in package names
+
+-> If package name conatins multiple words then we will use . (dot) to seperate words
+
+Eamples:
+
+java.lang
+java.io
+java.util
+in.ashokit
+com.oracle
+com.ibm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==========
+Chaper-1
+==========
+
+1) What is Java
+2) Java Features
+3) Java Environment Setup
+4) JDK vs JRE vs JVM
+5) Java Programs Execution Flow
+6) Java Programs Development (Compilation & Execution)
+7) Variables
+8) Data Types
+9) Identifiers
+10) Reserved Words (53)
+11) Java Coding Standards (Naming Conventions)
+12) Java Comments
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------***********Importent Points***********---------------------
+Declaration rules to a source file(.java file)
+
+-->only one public class
+-->any number of non public classes
+-->if source file contains public class then file name must be match with public class
+-->if the source file doesnt contains public class then no naming restrictions
+
+
+System will done conversions implicitly 
+---------------------------------------------
+
+
+byte to short,int,long,float,double  -->5
+
+short to int,long,float,double       -->4
+
+int to long,float,double             -->3
+
+long to float,double                 -->2
+
+float to double                      -->1
+
+
+char to int,long,float,double       --->4
+================================================
+                                      19
+==============================================
+
+
+
+**above conversion meaning is byte value can store short,int,float,double
+**and also short value can store int,long,flaot,double
+---------------------------------------------
+
+
+
+
+
+Programmers will done conversions explicitly:
+--------------------------------------------
+
+byte to char                                         ----1
+
+short to byte,char                                   ----2
+
+int to byte,short,char                               ----3
+
+long to byte,short,char,int                          ----4
+
+float to byte,short,int,long,char                    ----5
+
+double to byte,short,int,long,folat,char             ----6
+ 
+char to byte,short                                   ----2
+================================================================
+                                                        23
+================================================================
+
+declare byte and assign to a char
+also declaring a short and assign to bye 
+
+
+
+==================================================
+
+operations on data:
+-------------------
+(byte,short,int,char)+(byte,short,int,char)               ===>int
+
+(byte,short,int,char,int)+long                            ===>long
+
+(byte,short,int,char,int,long)+float                      ===>float
+
+(byte,short,int,char,int,long,float)+double               ===>double
+
+(byte,short,int,char,int,long,float,boolean)+boolean      ===>error
+
+
+
+
+
+
+ASCII(American standard code for information interchange)
+========================================================
+A=65  a=97   0=48
+
+B=66  b=98   1=49
+
+char a=65;
+syso(a);
+out put:A
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
