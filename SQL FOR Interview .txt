@@ -1,0 +1,411 @@
+
+
+Oracle SQL
+==========
+-> Commercial database (Paid database)
+-> Developed by Oracle Corporation
+-> Very strong for enterprise applications
+-> Commonly used in banking and large enterprise systems
+
+Postgress
+========
+-> Open-source database
+-> Free to use
+-> Very strong for modern applications
+-> Commonly used in web applications and startups
+
+
+1)Constraints
+===========
+Constraints are rules used to control valid data in a table.
+
+1)Primary Key
+2)Foreign Key
+3)NOT NULL
+4)UNIQUE
+5)CHECK 
+6)DEFAULT
+
+1)Primary Key  vs Foreign Key
+================================s
+->uniquely identifies each row
+->cannot be NULL
+->cannot contain duplicates
+
+
+->Foreign Key is a column used to establish relationship between two tables. 
+->It references the primary key of another table.
+
+
+
+3. NOT NULL
+============
+->NOT NULL ensures column must contain value.
+->emp_name VARCHAR(50) NOT NULL
+
+4. UNIQUE
+==========
+->UNIQUE prevents duplicate values.
+->email VARCHAR(100) UNIQUE
+->Same email cannot repeat.
+
+
+5. CHECK
+=========
+->CHECK restricts values based on condition.
+->age INT CHECK(age >= 18) Only age 18 or above allowed.
+
+
+6. DEFAULT
+===========
+->DEFAULT assigns automatic default value.
+->city VARCHAR(50) DEFAULT 'Hyderabad'
+->If no value given: Hyderabad inserted automatically
+
+
+TABLE
+======
+CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,
+    
+    emp_name VARCHAR(50) NOT NULL,
+    
+    email VARCHAR(100) UNIQUE,
+    
+    age INT CHECK(age >= 18),
+    
+    city VARCHAR(50) DEFAULT 'Hyderabad'
+);
+
+
+2)Joins 
+=====================
+->JOIN is used to combine data from two or more tables based on a common column.
+
+Inner JOIN
+-----------
+->INNER JOIN returns only matching records from two tables based on a common column.
+->INNER JOIN → position usually doesn't matter
+
+
+SELECT e.emp_id,
+       e.emp_name,
+       e.salary,
+       d.dept_name,
+       d.location
+FROM employee e
+INNER JOIN department d
+ON e.dept_id = d.dept_id;
+
+
+LEFT JOIN
+=========
+->ALL rows from LEFT table
+->Matching rows from RIGHT table
+->LEFT JOIN keeps all rows from the table written before LEFT JOIN
+
+
+
+SELECT e.emp_name,
+       d.dept_name
+FROM employee e
+LEFT JOIN department d
+ON e.dept_id = d.dept_id;(All Employe Table All+matching ID in Dept)
+
+
+
+SELECT d.dept_name,
+       e.emp_name
+FROM department d
+LEFT JOIN employee e
+ON d.dept_id = e.dept_id;(All department Table data + maching in Id emp)
+
+Example:
+========
+
+| dept_id | dept_name |
+| ------- | --------- |
+| 101     | HR        |
+| 106     | Testing   |
+
+
+| emp_name | dept_id |
+| -------- | ------- |
+| Ravi     | 101     |
+
+Query
+=====
+SELECT d.dept_name,
+       e.emp_name
+FROM department d
+LEFT JOIN employee e
+ON d.dept_id = e.dept_id;
+
+ouput:
+======
+
+| dept_name | emp_name |
+| --------- | -------- |
+| HR        | Ravi     |
+| Testing   | NULL     |
+
+
+Right Join 
+==========
+->ALL rows from RIGHT table
+->matching rows from LEFT table
+
+SELECT e.emp_name,
+       d.dept_name
+FROM employee e
+RIGHT JOIN department d
+ON e.dept_id = d.dept_id;
+
+
+Self JOIN
+===========
+->SELF JOIN is a join where a table is joined with itself.
+
+SELECT e.emp_name AS Employee,
+       m.emp_name AS Manager
+FROM staff e
+LEFT JOIN staff m
+ON e.manager_id = m.emp_id;
+
+
+
+3)Aggregate functions
+=====================
+->Aggregate functions perform calculations on multiple rows and return a single value.
+->Aggregate functions are commonly used with GROUP BY
+
+| Function | Purpose             |
+| -------- | ------------------- |
+| COUNT()  | Counts rows         |
+| SUM()    | Adds values         |
+| AVG()    | Finds average       |
+| MAX()    | Finds highest value |
+| MIN()    | Finds lowest value  |
+
+
+
+->SELECT COUNT(*) FROM employee;
+->SELECT SUM(salary) FROM employee;
+->SELECT AVG(salary) FROM employee;
+->SELECT MAX(salary) FROM employee;
+->SELECT MIN(salary) FROM employee;
+
+
+4)GROUP BY
+=========
+->GROUP BY is used to group rows that have the same values in a column.
+
+
+Count Employees Per Department
+==============================
+select dept_id,
+       count(*) as total_emp 
+       from practicesql.employee
+       group by dept_id;
+	   
+	   
+Average Salary Per Department
+==============================
+SELECT dept_id,
+       AVG(salary) AS avg_salary
+FROM employee
+GROUP BY dept_id;
+
+Minimum Salary Per Department
+==============================
+SELECT dept_id,
+       min(salary) AS min_salary
+FROM employee
+GROUP BY dept_id;
+
+
+Total Salary Per Department
+===========================
+SELECT dept_id,
+       SUM(salary) AS total_salary
+FROM employee
+GROUP BY dept_id;
+
+
+| dept_id | total_employees |
+| ------- | --------------- |
+| 101     | 3               |
+| 102     | 4               |
+| 103     | 3               |
+
+
+
+
+
+5)HAVING
+=======
+->HAVING is used to filter grouped data.
+->Used after GROUP BY
+
+->Where condition is used before group by 
+->Filters the rows 
+
+
+Departments having more than 2 employees
+========================================
+SELECT dept_id,
+       COUNT(*) AS total_employees
+FROM practicesql.employee
+GROUP BY dept_id
+HAVING COUNT(*) > 2;
+
+Average Salary Greater Than 50000
+===================================
+SELECT dept_id,
+       AVG(salary) AS avg_salary
+FROM employee
+GROUP BY dept_id
+HAVING AVG(salary) > 50000;
+
+
+6)ORDER BY
+=========
+->ORDER BY is used to sort data in ascending or descending order.
+->SELECT * FROM employee ORDER BY salary ASC;(Lowest salary → highest salary.)
+->SELECT * FROM employee ORDER BY salary DESC;(Highest salary → lowest salary.)
+
+
+7)Subqueries
+============
+->A subquery is a query written inside another query.
+->Inner query executes first
+->Outer query uses inner query result
+
+Employees Whose Salary Greater Than Average Salary
+===================================================
+SELECT emp_name,salary FROM employee WHERE salary > (SELECT AVG(salary)FROM employee);
+
+8)DELETE/TRUNCATE/DROP
+=====================
+
+DELETE
+======
+->DELETE removes specific rows from a table.
+->DML operation 
+
+->DELETE FROM employee WHERE emp_id = 1;
+->DELETE FROM employee
+
+TRUNCATE
+=========
+->TRUNCATE removes all rows from a table but keeps the table structure.
+->DDL Operation 
+
+TRUNCATE TABLE employee;
+
+DROP
+=========
+->DROP removes the complete table including structure and data.
+->DDL Operation 
+
+DROP TABLE employee;
+
+
+9)Schema vs Table
+=================
+-> Schema is like: a database container
+->It contains: tables views,procedures,functions
+
+->CREATE DATABASE company_db;
+
+
+Table
+======
+->Table stores actual data in rows and columns
+
+CREATE TABLE employee (
+    emp_id INT,
+    emp_name VARCHAR(50)
+);
+
+
+10)DDL vs DML vs DQL TCL
+=========================
+
+| Type | Full Form                    |
+| ---- | ---------------------------- |
+| DDL  | Data Definition Language     |
+| DML  | Data Manipulation Language   |
+| DQL  | Data Query Language          |
+| DCL  | Data Control Language        |
+| TCL  | Transaction Control Language |
+
+
+1. DDL (Data Definition Language)
+==================================
+->Used to create or modify database objects.
+   1)CREATE
+   2)ALTER
+   3)DROP 
+   4)TRUNCATE
+   
+2. DML (Data Manipulation Language)
+====================================
+->Used to manipulate data inside tables.
+     1)INSERT
+	 2)DELETE
+	 3)UPDATE
+	 
+3. TCL (Transaction Control Language)
+======================================
+->Used to manage transactions.
+    COMMIT,ROLLBACK
+	
+4. DQL (Data Query Language)
+=============================
+->Used to retrieve data.
+->DQL is used to fetch data from the database.
+->SELECT
+
+
+11)NULL vs NOT NULL
+====================
+
+NOT NULL
+========
+->CREATE TABLE employee (
+    emp_id INT PRIMARY KEY,
+    
+    emp_name VARCHAR(50) NOT NULL,
+    
+    email VARCHAR(100) NULL
+);
+
+
+
+->emp_name is mandatory
+->Cannot insert empty value.
+
+
+
+NULL
+=====
+->email is optional
+->Can store NULL.
+
+
+CODING
+======
+1)Second Highest Salary Query
+----------------------------
+SELECT MAX(salary)FROM employee SELECT MAX(salary)FROM employee);
+
+2)Duplicate Records Query
+=========================
+->SELECT emp_name,COUNT(*) AS total FROM employee GROUP BY emp_name HAVING COUNT(*) > 1;
+    
+	 1)Groups employee names
+          SELECT emp_name,COUNT(*) AS total FROM employee GROUP BY emp_name
+     2)Counts occurrences
+        HAVING COUNT(*) > 1;
+	
